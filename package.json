@@ -1,0 +1,78 @@
+{
+  "info": {
+    "name": "FastAPI - Citations",
+    "_postman_id": "abcd1234-5678-9012-efgh-ijklmnopqrst",
+    "description": "Collection de requêtes pour tester l'API FastAPI des citations.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET Accueil",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": [""]
+        }
+      }
+    },
+    {
+      "name": "GET Citation aléatoire",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/quote",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["quote"]
+        }
+      }
+    },
+    {
+      "name": "GET Toutes les citations",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/quotes",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["quotes"]
+        }
+      }
+    },
+    {
+      "name": "POST Ajouter une citation",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"author\": \"Ada Lovelace\",\n  \"content\": \"La poésie et la science sont faites pour coexister.\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/quote",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["quote"]
+        }
+      }
+    }
+  ]
+}
+
