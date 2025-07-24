@@ -1,7 +1,8 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from pydantic import BaseModel
+from starlette.requests import Request
+from starlette.responses import JSONResponse
 import random
-
 app = FastAPI()
 
 # Modèle de citation
@@ -32,3 +33,24 @@ def get_all_quotes():
 def add_quote(quote: Quote):
     quotes_db.append(quote.dict())
     return {"message": "Citation ajoutée avec succès.", "quote": quote}
+
+@app.get("/hello")
+def hello():
+    return "hello world"
+
+class WelcomeRequest(BaseModel):
+    name: str
+@app.get("/welcome")
+def welcome_user(request: WelcomeRequest):
+    return {f"Bienvenue {request.name}"}
+@app.post("/student")
+def student():
+    return
+
+@app.get("/student")
+def student_get():
+    return
+
+@app.put("/student")
+def student_put():
+    return
