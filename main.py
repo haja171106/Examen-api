@@ -43,9 +43,14 @@ class WelcomeRequest(BaseModel):
 @app.get("/welcome")
 def welcome_user(request: WelcomeRequest):
     return {f"Bienvenue {request.name}"}
+class studentAtrribut(BaseModel):
+    reference: str
+    FirstName: str
+    LastName: str
+    Age : int
 @app.post("/student")
-def student():
-    return
+def student(request: studentAtrribut):
+    return {{request.reference},{request.FirstName},{request.LastName},{request.Age}}
 
 @app.get("/student")
 def student_get():
