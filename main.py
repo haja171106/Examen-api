@@ -38,23 +38,27 @@ def add_quote(quote: Quote):
 def hello():
     return "hello world"
 
-class WelcomeRequest(BaseModel):
-    name: str
 @app.get("/welcome")
-def welcome_user(request: WelcomeRequest):
-    return {f"Bienvenue {request.name}"}
-class studentAtrribut(BaseModel):
+def welcome(name: str):
+    return {"message": f"Welcome {name}"}
+
+students_db = []
+
+class StudentAttribute(BaseModel):
     reference: str
     FirstName: str
     LastName: str
-    Age : int
-@app.post("/student")
-def student(request: studentAtrribut):
-    return {{request.reference},{request.FirstName},{request.LastName},{request.Age}}
+    Age: int
 
-@app.get("/student")
-def student_get():
-    return
+@app.post("/students", status_code=201)
+def add_students(students: list[StudentAttribute]):
+    for student in students:
+        students_db.append(student.dict())
+    return students_db
+
+@app.get("/students", status_code=200)
+def get_students():
+    return students_db
 
 @app.put("/student")
 def student_put():
